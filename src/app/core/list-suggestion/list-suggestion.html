@@ -1,0 +1,59 @@
+<!-- NAVBAR -->
+<nav class="navbar">
+  <span class="brand">Campus Ideas</span>
+  <div class="nav-links">
+    <a href="#">Accueil</a>
+    <a href="#" class="active">Suggestions</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<div class="container">
+
+  <h2>Liste des suggestions</h2>
+
+  <!-- SEARCH -->
+  <input
+    class="search-input"
+    type="text"
+    placeholder="Rechercher une suggestion..."
+    [(ngModel)]="searchText"
+  />
+
+  <!-- LIST -->
+  <div *ngFor="let s of filteredSuggestions" class="card">
+
+    <h3>{{ s.title }}</h3>
+
+    <div class="meta">
+      <span class="category">{{ s.category }}</span>
+      <span class="date">{{ s.date | date: 'd MMM y' }}</span>
+    </div>
+
+    <p class="description">{{ s.description }}</p>
+
+    <span class="badge"
+      [ngClass]="{
+        'badge-acceptee': s.status === 'acceptee',
+        'badge-refusee': s.status === 'refusee',
+        'badge-en_attente': s.status === 'en_attente'
+      }">
+      {{ s.status === 'acceptee' ? 'ACCEPTÉE' : s.status === 'refusee' ? 'REFUSÉE' : 'EN ATTENTE' }}
+    </span>
+
+    <div *ngIf="s.status !== 'refusee'">
+      <button class="btn-like" (click)="like(s)">👍 Like {{ s.nbLikes }}</button>
+      <button class="btn-fav" (click)="addToFavorites(s)">🤍 Ajouter aux favoris</button>
+    </div>
+
+  </div>
+
+  <!-- FAVORITES -->
+  <div class="favorites-section" *ngIf="favorites.length > 0">
+    <h2>⭐ Favoris</h2>
+    <div *ngFor="let f of favorites" class="fav-card">
+      {{ f.title }}
+    </div>
+  </div>
+
+</div>
