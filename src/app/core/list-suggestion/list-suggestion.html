@@ -1,12 +1,3 @@
-<!-- NAVBAR -->
-<nav class="navbar">
-  <span class="brand">Campus Ideas</span>
-  <div class="nav-links">
-    <a href="#">Accueil</a>
-    <a href="#" class="active">Suggestions</a>
-  </div>
-</nav>
-
 <!-- MAIN -->
 <div class="container">
 
@@ -45,6 +36,11 @@
       <button class="btn-like" (click)="like(s)">👍 Like {{ s.nbLikes }}</button>
       <button class="btn-fav" (click)="addToFavorites(s)">🤍 Ajouter aux favoris</button>
     </div>
+
+    <!-- ✅ Bouton Détails -->
+    <button class="btn-details" [routerLink]="['/suggestions', s.id]">
+      🔍 Détails
+    </button>
 
   </div>
 

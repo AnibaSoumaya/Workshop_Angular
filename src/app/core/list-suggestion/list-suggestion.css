@@ -181,3 +181,19 @@ h2 {
   font-size: 0.95rem;
   color: #1a1a2e;
 }
+
+.btn-details {
+  background-color: #4361ee;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  margin-top: 10px;
+  transition: 0.2s ease;
+}
+
+.btn-details:hover {
+  background-color: #3451d1;
+}
