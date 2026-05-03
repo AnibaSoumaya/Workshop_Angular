@@ -8,10 +8,11 @@ import { Footer } from './core/footer/footer';
 import { FormsModule } from '@angular/forms';
 import { Home } from './core/home/home';
 import { Notfound } from './core/notfound/notfound';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [App, Header, Footer, Home, Notfound],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule,CommonModule],
   providers: [provideBrowserGlobalErrorListeners()],
   bootstrap: [App],
 })

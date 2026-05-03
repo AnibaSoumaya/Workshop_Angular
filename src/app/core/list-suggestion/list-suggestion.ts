@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Suggestion } from '../../models/suggestion';
 
 @Component({
@@ -7,9 +8,9 @@ import { Suggestion } from '../../models/suggestion';
   templateUrl: './list-suggestion.html',
   styleUrl: './list-suggestion.css',
 })
-export class ListSuggestion {
+export class ListSuggestion implements OnInit {
 
- searchText: string = '';
+  searchText: string = '';
 
   suggestions: Suggestion[] = [
     {
@@ -52,7 +53,18 @@ export class ListSuggestion {
 
   favorites: Suggestion[] = [];
 
-  // ✅ GETTER au lieu d'une méthode
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    // Récupère la suggestion transmise depuis SuggestionFormComponent via le router state
+    const navigation = this.router.getCurrentNavigation();
+    const newSuggestion = navigation?.extras?.state?.['newSuggestion'];
+
+    if (newSuggestion) {
+      this.suggestions.push(newSuggestion);
+    }
+  }
+
   get filteredSuggestions(): Suggestion[] {
     return this.suggestions.filter(s =>
       s.title.toLowerCase().includes(this.searchText.toLowerCase()) ||
@@ -60,12 +72,10 @@ export class ListSuggestion {
     );
   }
 
-  // 👍 like
   like(s: Suggestion) {
     s.nbLikes++;
   }
 
-  // ⭐ favoris
   addToFavorites(s: Suggestion) {
     if (!this.favorites.includes(s)) {
       this.favorites.push(s);

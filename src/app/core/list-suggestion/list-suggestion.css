@@ -197,3 +197,17 @@ h2 {
 .btn-details:hover {
   background-color: #3451d1;
 }
+
+.btn-add {
+  margin: 15px 0;
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-add:hover {
+  background-color: #45a049;
+}

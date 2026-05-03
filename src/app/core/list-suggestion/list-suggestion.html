@@ -3,6 +3,10 @@
 
   <h2>Liste des suggestions</h2>
 
+ <button class="btn-add" [routerLink]="['/suggestions/new']">
+  Ajouter une suggestion
+</button>
+
   <!-- SEARCH -->
   <input
     class="search-input"
@@ -33,20 +37,20 @@
     </span>
 
     <div *ngIf="s.status !== 'refusee'">
-      <button class="btn-like" (click)="like(s)">👍 Like {{ s.nbLikes }}</button>
-      <button class="btn-fav" (click)="addToFavorites(s)">🤍 Ajouter aux favoris</button>
+      <button class="btn-like" (click)="like(s)"> Like {{ s.nbLikes }}</button>
+      <button class="btn-fav" (click)="addToFavorites(s)"> Ajouter aux favoris</button>
     </div>
 
-    <!-- ✅ Bouton Détails -->
+    <!--  Bouton Détails -->
     <button class="btn-details" [routerLink]="['/suggestions', s.id]">
-      🔍 Détails
+       Détails
     </button>
 
   </div>
 
   <!-- FAVORITES -->
   <div class="favorites-section" *ngIf="favorites.length > 0">
-    <h2>⭐ Favoris</h2>
+    <h2> Favoris</h2>
     <div *ngFor="let f of favorites" class="fav-card">
       {{ f.title }}
     </div>
